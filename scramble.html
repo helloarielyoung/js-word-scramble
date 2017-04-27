@@ -34,6 +34,8 @@
 
         while (playing) {
 
+//need to change this so that instead of taking  word from the user, it picks from
+// WORDS and randomly scrambles it.
             //Let them shuffle a word
             var choice = prompt("Enter a word to be scrambled:");
             var result = shuffle(choice.split("")).join("");
