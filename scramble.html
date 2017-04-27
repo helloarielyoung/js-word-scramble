@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Scramble</title>
+</head>
+<body>
+    <h1>A Javascript Word Scramble Game</h1>
+
+    <script>
+    "use strict";
+        var WORDS     = ["booger", "apple", "hackbright", "mango", "Balloonicorn"];
+        var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman", "lloBaoncoirn"];
+
+        function getRandomInt(min, max) {
+         min = Math.ceil(min);
+         max = Math.floor(max);
+         return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        var playing = true;
+
+        while (playing) {
+
+            // Grab a random word from the WORDS array.
+            var randomNumber = getRandomInt(0,5);
+            var randomWord = WORDS[randomNumber];       
+
+            // Grab the corresponding scrambled word from the SCRAMBLED array.
+            var randomScrambledWord = SCRAMBLED[randomNumber];
+
+            // Prompt the user to guess the original word when given the scrambled word.
+
+            var userGuess = prompt("Guess the orignal word: " + randomScrambledWord, "");
+
+            // If the user guesses wrong, tell them they were wrong and show the right word.
+
+            if (userGuess !== randomWord) {
+                alert("Sorry, wrong word.  The right word was " + randomWord);
+            }
+            
+            // If the user guesses the correct word, congratulate them.
+            if (userGuess === randomWord) {
+                alert("Congratulations! You are soooo smart!");
+            }
+
+            playing = confirm("Press OK To keep playing or Cancel to quit");
+
+            // What does confirm() return?
+            // What does setting the playing variable do?
+        }
+
+        alert("goodbye!");
+    </script>
+    
+</body>
+</html>
