@@ -17,7 +17,28 @@
 
         var playing = true;
 
+        function shuffle (array) {
+          var i = 0
+            , j = 0
+            , temp = null
+
+        for (i = array.length - 1; i > 0; i -= 1) {
+            j = Math.floor(Math.random() * (i + 1))
+            temp = array[i]
+            array[i] = array[j]
+            array[j] = temp
+            }
+
+            return array
+        }
+
         while (playing) {
+
+            //Let them shuffle a word
+            var choice = prompt("Enter a word to be scrambled:");
+            var result = shuffle(choice.split("")).join("");
+
+            alert("Your word scrambled: " + result);
 
             // Grab a random word from the WORDS array.
             var randomNumber = getRandomInt(0,WORDS.length);
@@ -30,14 +51,16 @@
 
             var userGuess = prompt("Guess the orignal word: " + randomScrambledWord);
 
+            var lowerUserGuess = userGuess.toLowerCase().trim();
+
             // If the user guesses wrong, tell them they were wrong and show the right word.
 
-            if (userGuess !== randomWord) {
+            if (lowerUserGuess !== randomWord) {
                 alert("Sorry, wrong word.  The right word was " + randomWord);
             }
             
             // If the user guesses the correct word, congratulate them.
-            if (userGuess === randomWord) {
+            if (lowerUserGuess === randomWord) {
                 alert("Congratulations! You are soooo smart!");
             }
 
